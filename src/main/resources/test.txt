@@ -1,0 +1,35 @@
+Proxy is working for example.com! > 184.181.217.210:4145
+Proxy is working for example.com! > 174.77.111.198:49547
+Proxy is working for example.com! > 213.19.205.18:54321
+Proxy is working for example.com! > 184.178.172.11:4145
+Proxy is working for example.com! > 184.178.172.11:4145
+Proxy is working for example.com! > 192.252.214.20:15864
+Proxy is working for example.com! > 184.170.245.148:4145
+Proxy is working for example.com! > 174.75.211.222:4145
+Proxy is working for example.com! > 181.209.103.98:5678
+Proxy is working for example.com! > 198.8.94.170:4145
+Proxy is working for example.com! > 209.121.164.50:31147
+Proxy is working for example.com! > 184.185.2.12:4145
+Proxy is working for example.com! > 154.79.246.18:9898
+Proxy is working for example.com! > 154.79.246.18:9898
+Proxy is working for example.com! > 142.54.229.249:4145
+Proxy is working for example.com! > 138.0.229.232:4153
+Proxy is working for example.com! > 192.111.139.162:4145
+Proxy is working for example.com! > 185.46.170.253:4145
+Proxy is working for example.com! > 27.147.149.130:52596
+Proxy is working for example.com! > 27.147.149.130:52596
+Proxy is working for example.com! > 64.227.108.25:31908
+Proxy is working for example.com! > 78.61.27.207:5678
+Proxy is working for example.com! > 78.61.27.207:5678
+Proxy is working for example.com! > 8.130.34.44:8800
+Proxy is working for example.com! > 104.200.152.30:4145
+Proxy is working for example.com! > 91.211.177.33:3629
+Proxy is working for example.com! > 91.211.177.33:3629
+Proxy is working for example.com! > 38.54.95.19:80
+Proxy is working for example.com! > 38.54.95.19:80
+Proxy is working for example.com! > 103.36.35.251:5678
+Proxy is working for example.com! > 80.92.227.185:5678
+Proxy is working for example.com! > 103.115.255.209:36331
+Proxy is working for example.com! > 190.2.115.18:4153
+
+Deprecated Gradle features were used in this build
