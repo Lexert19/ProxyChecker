@@ -9,15 +9,13 @@ import io.netty.util.CharsetUtil;
 class TcpHttpRequestHandler extends SimpleChannelInboundHandler<ByteBuf> {
     private  final String remoteHost;
     private final int remotePort;
-    private  final String proxyHost;
-    private final int proxyPort;
+    private final ProxyModel proxy;
 
 
-    public TcpHttpRequestHandler(String remoteHost, int remotePort, String proxyHost, int proxyPort) {
+    public TcpHttpRequestHandler(String remoteHost, int remotePort, ProxyModel proxy) {
         this.remoteHost = remoteHost;
         this.remotePort = remotePort;
-        this.proxyHost = proxyHost;
-        this.proxyPort = proxyPort;
+        this.proxy = proxy;
     }
 
     @Override
@@ -38,15 +36,14 @@ class TcpHttpRequestHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
-        //System.out.println("Received data from server: " + msg.toString(CharsetUtil.UTF_8).length() );
-        System.out.println("Proxy is working for "+remoteHost+"! > "+proxyHost+":"+proxyPort);
+        System.out.println(proxy.toString());
+        SaveProxy.appendProxyToFile(proxy);
         ctx.close();
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 
-        //cause.printStackTrace();
         ctx.close();
     }
 }

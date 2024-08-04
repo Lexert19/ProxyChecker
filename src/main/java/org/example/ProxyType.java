@@ -10,10 +10,9 @@ public enum ProxyType {
             try {
                 return ProxyType.valueOf(protocol.toUpperCase());
             } catch (IllegalArgumentException e) {
-                // Obsługa przypadku, gdy ciąg znaków nie pasuje do żadnego z typów enum
                 System.err.println("Niepoprawny typ protokołu: " + protocol);
             }
         }
-        return null; // Lub można rzucić wyjątek, w zależności od wymagań
+        return null;
     }
 }

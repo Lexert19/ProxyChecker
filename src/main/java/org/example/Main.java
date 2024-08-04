@@ -5,10 +5,7 @@ import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 import javax.net.ssl.SSLException;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.util.LinkedList;
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -26,92 +23,32 @@ public class Main {
                 .build();
 
 
-        List<ProxyModel> proxies = ProxyDownloader.getProxies();
+        List<ProxyModel> proxies = new LinkedList<>();
+
+        List<ProxyModel> geosProxies = new LinkedList<>();
+
+        for(int i=0; i<5; i++){
+            geosProxies.addAll(ProxyDownloader.getProxiesGeoNode(i+1));
+        }
+        System.out.println("number of proxies in Geo: "+ geosProxies.size());
+        proxies.addAll(geosProxies);
+
+
+        List<ProxyModel> proxyScrapesProxies = ProxyDownloader.getProxiesProxyScrape();
+        System.out.println("number of proxies in ProxyScrape: "+proxyScrapesProxies.size());
+        proxies.addAll(proxyScrapesProxies);
 
         for(ProxyModel proxyModel : proxies){
             ProxyClient proxyClient = new ProxyClient(
-                    proxyModel.getIp(),
-                    proxyModel.getPort(),
                     "example.com",
                     443,
-                    proxyModel.getType());
+                    proxyModel);
             proxyClient.setSslContext(sslContext);
 
             proxyClient.testProxy();
 
         }
 
-       /* try (InputStream inputStream = Main.class.getResourceAsStream("/httpProxy.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String ipAddress = parts[0];
-                    int port = Integer.parseInt(parts[1]);
-                    //String username = parts[2];
-                    //String password = parts[3];
-
-
-
-
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }*/
     }
-
-  /*  public static void testHttp(){
-        try (InputStream inputStream = Main.class.getResourceAsStream("/httpProxy.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String ipAddress = parts[0];
-                    int port = Integer.parseInt(parts[1]);
-
-                    HttpsProxyClient client = HttpsProxyClient.builder()
-                            .proxyHost(ipAddress)
-                            .proxyPort(port)
-                            .remoteHost("example.org")
-                            .remotePort(80)
-                            .sslContext(null)
-                            .build();
-
-                    client.testProxy();
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
-
-    /*public  static void testSocks4(){
-        try (InputStream inputStream = Main.class.getResourceAsStream("/httpProxy.txt");
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(":");
-                if (parts.length == 2) {
-                    String ipAddress = parts[0];
-                    int port = Integer.parseInt(parts[1]);
-
-                    ProxyClient client = ProxyClient.builder()
-                        .proxyHost(ipAddress)
-                        .proxyPort(port)
-                        .remoteHost("example.org")
-                        .remotePort(80)
-                        .sslContext(null)
-                        .build();
-
-                    client.testProxy();
-                }
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }*/
 
 }
